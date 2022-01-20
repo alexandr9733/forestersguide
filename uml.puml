@@ -1,0 +1,71 @@
+@startuml
+class com.example.forestersguide.ListCultureAdapter {
+- Context mContext
+- List<ListCulture> mList
++ int getCount()
++ ListCulture getItem(int)
++ long getItemId(int)
++ View getView(int,View,ViewGroup)
+}
+class com.example.forestersguide.MainActivity {
+~ DbHelper db
+~ ListView lv
+~ Button btnAdd
+~ EditText edFind
+~ ListCultureAdapter lma
+~ String selectedID
+~ int selectedPosition
+# void onCreate(Bundle)
+- void loadData(String)
++ void onCreateContextMenu(ContextMenu,View,ContextMenu.ContextMenuInfo)
++ boolean onContextItemSelected(MenuItem)
++ void onResume()
++ void onClickBtn(View)
+}
+class com.example.forestersguide.DbHelper {
+- {static} String DB_NAME
+~ Context context
++ void onCreate(SQLiteDatabase)
++ void onUpgrade(SQLiteDatabase,int,int)
++ List<ListCulture> getListMashrooms(String)
++ byte[] getBlob(String,String,String)
++ boolean updateBlob(String,String,String,byte[])
++ Cursor query(String)
++ boolean sqlExec(String)
++ String getOneData(String,String,boolean)
+}
+class com.example.forestersguide.AddEditCulture {
+- int Pick_image
+~ DbHelper db
+~ EditText edName
+~ ImageView img
+~ Button btnLoad
+~ String rowId
+~ Bitmap bmp
+~ boolean imgOnlyLoad
+# void onCreate(Bundle)
++ void onClickBtn(View)
+# void onActivityResult(int,int,Intent)
+}
+class com.example.forestersguide.ListCulture {
+- int id
+- String name
+- String description
+- Bitmap img
++ int getId()
++ void setId(int)
++ String getName()
++ void setName()
++ String getDescription()
++ void setDescription()
++ Bitmap getImage()
++ void setImage(Bitmap)
++ byte[] getImageByteArray()
+}
+
+
+android.widget.BaseAdapter <|-- com.example.forestersguide.ListCultureAdapter
+androidx.appcompat.app.AppCompatActivity <|-- com.example.forestersguide.MainActivity
+android.database.sqlite.SQLiteOpenHelper <|-- com.example.forestersguide.DbHelper
+androidx.appcompat.app.AppCompatActivity <|-- com.example.forestersguide.AddEditCulture
+@enduml

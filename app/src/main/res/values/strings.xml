@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Forester\'s Guide</string>
+    <string name="Name">Наименование:</string>
+    <string name="Description">Описание:</string>
+    <string name="Image">Изображение:</string>
+    <string name="Load">Загрузить</string>
+    <string name="Delete">Удалить</string>
+    <string name="Save">Сохранить</string>
+    <string name="Add">Добавить</string>
+    <string name="Find">Поиск:</string>
+    <string name="FindHint">Введите текст для поиска</string>
+</resources>
